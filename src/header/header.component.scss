@@ -1,0 +1,48 @@
+@import '../assets/variables.scss';
+
+.header {
+    height: 60px;
+    width: 100%;
+    box-shadow: 0 0 20px -2px #ccc;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+
+    .header-left {
+        display: inline-flex;
+        height: 60px;
+        color: $primary-color;
+
+        .venom-logo {
+            height: 100%;
+        }
+
+        .venom {
+            position: relative;
+            height: 100%;
+            line-height: 60px;
+            left: -20px;
+            font-size: 25px;
+        }
+    }
+
+    .counter {
+        float: right;
+        position: relative;
+        right: -30px;
+        height: 60px;
+        background-color: $primary-color;
+        width: 200px;
+        transform: skewX(-40deg);
+        padding: 10px;
+        box-sizing: border-box;
+        color: $white-color;
+        text-align: right;
+        padding-right: 70px;
+        font-size: 30px;
+
+        * {
+            transform: skewX(40deg);
+        }
+    }
+}

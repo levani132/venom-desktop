@@ -1,0 +1,108 @@
+$header-height: 40px;
+$minimize: darkseagreen;
+$maximize: goldenrod;
+$close: #f44336;
+
+.window {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px -10px;
+    border-radius: 7px;
+    overflow: hidden;
+    resize: both;
+    background-color: white;
+
+    .window-header {
+        height: $header-height;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        justify-content: space-between;
+        user-select: none;
+
+        .window-header-left {
+            height: 100%;
+            display: inline-flex;
+
+            .window-header-icon {
+                display: inline-block;
+                position: relative;
+                max-width: 60px;
+            
+                * {
+                    max-height: 100%;
+                }
+            }
+
+            .window-header-title {
+                display: inline-block;
+                line-height: $header-height;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .window-header-right {
+            height: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 5px;
+
+            .window-header-action {
+                position: relative;
+                width: 15px;
+                height: 15px;
+                background-color: #ccc;
+                border-radius: 50%;
+                margin: 3px;
+                transition: background-color .2s, content .2s;
+                content: "";
+                cursor: pointer;
+
+                &.minimize:hover {
+                    &:before {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -56%);
+                        font-family: monospace;
+                        color: white;
+                        display: inline;
+                        content: "-";
+                    }
+                    background-color: $minimize;
+                }
+
+                &.maximize:hover {
+                    &:before {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -56%);
+                        font-family: monospace;
+                        color: white;
+                        display: inline;
+                        content: "□";
+                    }
+                    background-color: $maximize;
+                }
+
+                &.close:hover {
+                    &:before {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -56%);
+                        font-family: monospace;
+                        color: white;
+                        display: inline;
+                        content: "x";
+                    }
+                    background-color: $close;
+                }
+            }
+        }
+    }
+
+}

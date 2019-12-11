@@ -1,0 +1,41 @@
+@import '../assets/variables.scss';
+
+.button {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    user-select: none;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: $white-color;
+
+    .button-counter {
+        margin-top: 10px;
+        font-size: 30px;
+        transition: font-size .1s;
+
+        &.grown {
+            font-size: 40px;
+        }
+    }
+
+    .ripple {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple .5s linear;
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
