@@ -1,16 +1,18 @@
 @import '../assets/variables.scss';
 
 .header {
-    height: 60px;
+    position: fixed;
+    height: $header-height;
     width: 100%;
+    background-color: white;
     box-shadow: 0 0 20px -2px #ccc;
     overflow: hidden;
-    position: fixed;
     top: 0;
+    z-index: 1;
 
     .header-left {
         display: inline-flex;
-        height: 60px;
+        height: $header-height;
         color: $primary-color;
 
         .venom-logo {
@@ -20,26 +22,26 @@
         .venom {
             position: relative;
             height: 100%;
-            line-height: 60px;
-            left: -20px;
-            font-size: 25px;
+            line-height: $header-height;
+            left: -$header-height / 3;
+            font-size: $header-height * 5 / 12;
         }
     }
 
     .counter {
         float: right;
         position: relative;
-        right: -30px;
-        height: 60px;
+        right: -$header-height / 2;
+        height: $header-height;
         background-color: $primary-color;
         width: 200px;
         transform: skewX(-40deg);
-        padding: 10px;
+        padding: $header-height / 5;
         box-sizing: border-box;
         color: $white-color;
         text-align: right;
-        padding-right: 70px;
-        font-size: 30px;
+        padding-right: $header-height * 7 / 6;
+        font-size: $header-height / 2;
 
         * {
             transform: skewX(40deg);

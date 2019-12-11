@@ -9,8 +9,11 @@ const [, shellStateService] = shellState();
 export default class Desktop extends VenomComponent {
     counter;
 
-    increase = () => {
-      this.counter++;
+    increase = counter => {
+      if (counter)
+        counter.set(counter.get() + 1);
+      else
+        this.counter++;
       const buttonCounter = document.querySelector('.button-counter');
       buttonCounter.classList.add('grown');
       setTimeout(() => buttonCounter.classList.remove('grown'), 50);
@@ -19,15 +22,24 @@ export default class Desktop extends VenomComponent {
     render() {
         return template`
         <div class="desktop">
-            <div class="file" ondblclick=${() => shellStateService.openWindow(() => template`
-            <${Button} onclick="${this.increase}">
+        <div class="file" ondblclick=${() => shellStateService.openWindow(() => template`
+            <${Button} onclick="${() => this.increase()}">
                 <div>Click to increase</div>
                 <div class="button-counter">${this.counter}</div>
             </>
-            `)}>
-                <div class="file-icon"><img src="${VenomLogo}"/></div>
-                <div class="file-title">Counter App</div>
-            </div>
+        `)}>
+            <div class="file-icon"><img src="${VenomLogo}"/></div>
+            <div class="file-title">Global Counter App</div>
+        </div>
+        <div class="file" ondblclick=${() => shellStateService.openWindow((counter = this.counter.copy()) => template`
+            <${Button} onclick="${() => this.increase(counter)}">
+                <div>Click to increase</div>
+                <div class="button-counter">${counter}</div>
+            </>
+        `)}>
+            <div class="file-icon"><img src="${VenomLogo}"/></div>
+            <div class="file-title">Counter App</div>
+        </div>
             <div class="file" ondblclick=${() => shellStateService.openWindow(() => template`
                 <div>Second Window</div>
             `)}>

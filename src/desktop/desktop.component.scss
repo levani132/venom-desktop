@@ -1,14 +1,22 @@
+@import '../assets/variables.scss';
+
 $file-icon-width: 100px;
 $file-icon-height: 100px;
 
 .desktop {
     display: flex;
-    height: calc(100% - 60px);
+    height: calc(100% - #{$header-height});
     width: 100%;
-    margin-top: 60px;
+    margin-top: $header-height;
     box-sizing: border-box;
+    background-image: url(../assets/desktop.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     .file {
+        width: $file-icon-width;
+        color: whitesmoke;
 
         .file-icon {
             display: flex;
