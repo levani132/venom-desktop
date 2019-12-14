@@ -2,6 +2,7 @@ $header-height: 40px;
 $minimize: darkseagreen;
 $maximize: goldenrod;
 $close: #f44336;
+$border-size: 5px;
 
 .window {
     position: absolute;
@@ -10,10 +11,47 @@ $close: #f44336;
     box-shadow: 0 0 20px -10px;
     border-radius: 7px;
     overflow: hidden;
-    resize: both;
     background-color: white;
     min-height: 70px;
     min-width: 73px;
+
+    &.maximized .window-border {
+        display: none;
+    }
+
+    .window-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &.top {
+            width: 100%;
+            height: $border-size;
+            cursor: ns-resize;
+        }
+
+        &.right {
+            width: $border-size;
+            height: 100%;
+            left: 100%;
+            transform: translateX(-100%);
+            cursor: ew-resize;
+        }
+
+        &.bottom {
+            width: 100%;
+            height: $border-size;
+            top: 100%;
+            transform: translateY(-100%);
+            cursor: ns-resize;
+        }
+
+        &.left {
+            width: $border-size;
+            height: 100%;
+            cursor: ew-resize;
+        }
+    }
 
     .window-header {
         height: $header-height;

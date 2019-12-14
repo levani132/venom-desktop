@@ -8,3 +8,7 @@ body, html, .my-app {
     height: 100vh;
     width: 100vw;
 }
+
+.venom-logo {
+    filter: invert(59%) sepia(67%) saturate(2750%) hue-rotate(159deg) brightness(101%) contrast(104%);
+}

@@ -30,6 +30,6 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "venom-js": "^1.0.19"
+    "venom-js": "^1.0.20"
   }
 }

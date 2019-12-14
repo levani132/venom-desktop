@@ -1,49 +1,29 @@
 import { VenomComponent, template } from "venom-js";
-import Button from "../button/button.component";
 import shellState from "../shell/shell.state";
 import VenomLogo from "../assets/venom-logo.png";
 import "./desktop.component.scss";
+import Counter from "../programs/counter/counter.component";
 
 const [, shellStateService] = shellState();
 
 export default class Desktop extends VenomComponent {
     counter;
 
-    increase = counter => {
-      if (counter)
-        counter.set(counter.get() + 1);
-      else
-        this.counter++;
-      const buttonCounter = document.querySelector('.button-counter');
-      buttonCounter.classList.add('grown');
-      setTimeout(() => buttonCounter.classList.remove('grown'), 50);
-    };
-
     render() {
         return template`
         <div class="desktop">
-        <div class="file" ondblclick=${() => shellStateService.openWindow(() => template`
-            <${Button} onclick="${() => this.increase()}">
-                <div>Click to increase</div>
-                <div class="button-counter">${this.counter}</div>
-            </>
-        `)}>
-            <div class="file-icon"><img src="${VenomLogo}"/></div>
-            <div class="file-title">Global Counter App</div>
-        </div>
-        <div class="file" ondblclick=${() => shellStateService.openWindow((counter = this.counter.copy()) => template`
-            <${Button} onclick="${() => this.increase(counter)}">
-                <div>Click to increase</div>
-                <div class="button-counter">${counter}</div>
-            </>
-        `)}>
-            <div class="file-icon"><img src="${VenomLogo}"/></div>
-            <div class="file-title">Counter App</div>
-        </div>
+            <div class="file" ondblclick=${() => shellStateService.openWindow(() => template`<${Counter} counter=${this.counter}></>`)}>
+                <div class="file-icon venom-logo"><img src="${VenomLogo}"/></div>
+                <div class="file-title">Global Counter App</div>
+            </div>
+            <div class="file" ondblclick=${() => shellStateService.openWindow(() => template`<${Counter} counter=${this.counter.copy()}></>`)}>
+                <div class="file-icon venom-logo"><img src="${VenomLogo}"/></div>
+                <div class="file-title">Counter App</div>
+            </div>
             <div class="file" ondblclick=${() => shellStateService.openWindow(() => template`
                 <div>Second Window</div>
             `)}>
-                <div class="file-icon"><img src="${VenomLogo}"/></div>
+                <div class="file-icon venom-logo"><img src="${VenomLogo}"/></div>
                 <div class="file-title">Second File</div>
             </div>
         </div>
