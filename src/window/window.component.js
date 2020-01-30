@@ -87,7 +87,7 @@ export default class Window extends VenomComponent {
                     <div class="window-header-right">
                         <div class="window-header-action minimize" onclick=${this.onminimize}></div>
                         <div class="window-header-action maximize" onclick=${this.handleMaximize}></div>
-                        <div class="window-header-action close"></div>
+                        <div class="window-header-action close" onclick=${this.onclose}></div>
                     </div>
                 </div>
                 <div class="window-body">${this.children}</div>
